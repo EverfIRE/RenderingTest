@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{b9443c44-182e-4518-8613-144cab1d271f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\public">
+      <UniqueIdentifier>{9bf6cbb8-18c1-452e-a779-79f328887b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\prviate">
+      <UniqueIdentifier>{03291ac0-12c7-4a52-8b5a-e12b92f4dac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{4f3bb009-61af-4f84-92cc-c0bfe3cb4cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\public">
+      <UniqueIdentifier>{7bf78680-cc4d-494b-b36e-1b23624fbcd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\private">
+      <UniqueIdentifier>{d843d153-e914-47d2-98a3-9840a3ce40e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\prviate\RenderWindows">
+      <UniqueIdentifier>{aa0d92d3-42f4-4814-9416-085e519f7c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\public\GLRenderContext">
+      <UniqueIdentifier>{2daa89d8-8203-41ec-bf6c-2b74d40350fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\public\Scene">
+      <UniqueIdentifier>{c10f63ca-5fa3-48c2-b162-26603fd42259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\prviate\scene">
+      <UniqueIdentifier>{8bca5b42-cd15-4913-ac49-564420f0e10f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainRenderWin.cpp">
+      <Filter>Source\prviate\RenderWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source\prviate\scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GLRenderContext.h">
+      <Filter>Source\public\GLRenderContext</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Source\public\Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
