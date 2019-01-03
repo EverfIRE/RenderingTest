@@ -65,3 +65,4 @@ RenderingTest/RenderingTest/x64/Debug/vc141.idb
 RenderingTest/RenderingTest/x64/Debug/vc141.pdb
 RenderingTest/x64/Debug/RenderingTest.ilk
 RenderingTest/x64/Debug/RenderingTest.pdb
+*.opendb
