@@ -1,6 +1,6 @@
 //ThisFile Is about all Scene 
 
-#include "scene.h"
+#include "scene/scene.h"
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -15,7 +15,43 @@ void Draw()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
-	DrawTriangleStrip();
+	glLoadIdentity();
+	gluLookAt(0.0f,0.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+	float LightPosp[] = { 0.5f,0.0f,0.0f,0.5f };
+	glLightfv(GL_LIGHT0, GL_POSITION, LightPosp);
+	
+	float whiteColor[] = {1.0f,1.0f,1.0f,1.0f};
+	float ambientMat[] = {0.07f,0.07f,0.07f,1.0f};
+	float diffuseMat[] = { 0.4f,0.4f,0.4f,1.0f };
+	float specularMat[] = { 0.9f,0.9f,0.9f,1.0f };
+	float blackColor[] = { 0.0f,0.0f,0.0f,1.0f };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, whiteColor);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ambientMat);
+
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteColor);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMat);
+
+	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
+
+	DrawPlant();
+
+	glPushMatrix();
+	  glTranslatef(-1.0f,0.0f,-2.5f);
+	  glRotatef(30.0f,0.2f,0.0f,0.3f);
+	  glScalef(1.0f,1.0f,1.0f);
+	 DrawTriangleStrip();
+	glPopMatrix();
+
+	glRotatef(15.0f, -0.2f, 0.0f, -0.3f);
+	glPushMatrix();
+	  glTranslatef(1.0f, 0.0f, 0.0f);
+	  DrawTriangle();
+	glPopMatrix();
 }
 
 /**----------------------DrawTestScene--------------------**/
@@ -31,12 +67,12 @@ void DrawTriangle()
 void DrawTriangleStrip()
 {
 	glBegin(GL_TRIANGLE_STRIP);
-	glColor4ub(255, 0, 0, 255); glVertex3f(-0.5f, -0.25f, -2.5f);
-	glColor4ub(0, 0, 255, 255); glVertex3f(0.5f, -0.25f, -2.5f);
-	glColor4ub(0, 255, 0, 255); glVertex3f(-0.5f, 0.25f, -2.5f);
-	glColor4ub(255, 0, 0, 255); glVertex3f(0.5f, 0.25f, -2.5f);
-	glColor4ub(0, 0, 255, 255); glVertex3f(-0.5f, 0.75f, -2.5f);
-	glColor4ub(255, 0, 0, 255); glVertex3f(0.5f, 0.75f, -2.5f);
+	glColor4ub(255, 0, 0, 255); glVertex3f(-0.5f, -0.25f, 0.0f);
+	glColor4ub(0, 0, 255, 255); glVertex3f(0.5f, -0.25f, 0.0f);
+	glColor4ub(0, 255, 0, 255); glVertex3f(-0.5f, 0.25f, 0.0f);
+	glColor4ub(255, 0, 0, 255); glVertex3f(0.5f, 0.25f, 0.0f);
+	glColor4ub(0, 0, 255, 255); glVertex3f(-0.5f, 0.75f, 0.0f);
+	glColor4ub(255, 0, 0, 255); glVertex3f(0.5f, 0.75f, 0.0f);
 	glEnd();
 }
 
@@ -128,6 +164,17 @@ void DrawPolygon()
 	glColor4ub(0, 255, 0, 255); glVertex3f(-1.2f, 0.25f, -2.5f);
 	glColor4ub(255, 0, 0, 255); glVertex3f(-1.5f, -0.20f, -2.5f);
 	glColor4ub(0, 0, 255, 255); glVertex3f(-1.5f, -0.35f, -2.5f);
+	glEnd();
+}
+
+void DrawPlant()
+{
+	glBegin(GL_QUADS);
+	glColor4ub(128, 128, 128, 255);
+	glVertex3f(-1.0f, -0.2f, 0.0f);
+	glVertex3f(1.0f, -0.2f, 0.0f);
+	glVertex3f(1.0f, -0.2f, -1.5f);
+	glVertex3f(-1.0f, -0.2f, -1.5f);
 	glEnd();
 }
 

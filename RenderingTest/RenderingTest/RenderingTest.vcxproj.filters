@@ -31,20 +31,32 @@
     <Filter Include="Source\prviate\scene">
       <UniqueIdentifier>{8bca5b42-cd15-4913-ac49-564420f0e10f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\prviate\Utils">
+      <UniqueIdentifier>{888c2c20-432a-45d6-a589-8fc474ea30ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\public\Utils">
+      <UniqueIdentifier>{b1d5bfee-1e51-4d56-9722-923ed3a24eff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainRenderWin.cpp">
+    <ClCompile Include="Source\Prviate\RenderWindows\MainRenderWin.cpp">
       <Filter>Source\prviate\RenderWindows</Filter>
     </ClCompile>
-    <ClCompile Include="scene.cpp">
+    <ClCompile Include="Source\Prviate\scene\scene.cpp">
       <Filter>Source\prviate\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Prviate\Utils\Utils.cpp">
+      <Filter>Source\prviate\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLRenderContext.h">
+    <ClInclude Include="Utils.h">
+      <Filter>Source\public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\GLRenderContext\GLRenderContext.h">
       <Filter>Source\public\GLRenderContext</Filter>
     </ClInclude>
-    <ClInclude Include="scene.h">
+    <ClInclude Include="Source\Public\scene\scene.h">
       <Filter>Source\public\Scene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>D:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Public;D:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -115,12 +117,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MainRenderWin.cpp" />
-    <ClCompile Include="scene.cpp" />
+    <ClCompile Include="Source\Prviate\RenderWindows\MainRenderWin.cpp" />
+    <ClCompile Include="Source\Prviate\scene\scene.cpp" />
+    <ClCompile Include="Source\Prviate\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLRenderContext.h" />
-    <ClInclude Include="scene.h" />
+    <ClInclude Include="Source\Public\GLRenderContext\GLRenderContext.h" />
+    <ClInclude Include="Source\Public\scene\scene.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

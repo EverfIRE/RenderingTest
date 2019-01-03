@@ -1,8 +1,16 @@
-#include "GLRenderContext.h"
-#include "scene.h"
+#include "GLRenderContext/GLRenderContext.h"
+#include "scene/scene.h"
+#include "Utils/Utils.h"
 
 #pragma comment(lib,"opengl32.lib")
 #pragma comment(lib,"glu32.lib")
+
+unsigned char * LoadFileContent(const char * path, int & filesize)
+{
+
+
+	return nullptr;
+}
 
 LRESULT CALLBACK RenderTesProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {

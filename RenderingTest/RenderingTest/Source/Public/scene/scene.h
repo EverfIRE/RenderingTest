@@ -1,7 +1,7 @@
 //ThisFile Is about all Scene 
 
 #pragma once
-#include "GLRenderContext.h"
+#include "GLRenderContext/GLRenderContext.h"
 
 //Init Scene Draw Context
 void Init();
@@ -35,3 +35,5 @@ void DrawQuads();
 void DrawQudaStrip();
 
 void DrawPolygon();
+
+void DrawPlant();
