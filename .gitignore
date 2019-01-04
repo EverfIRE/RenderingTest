@@ -66,3 +66,5 @@ RenderingTest/RenderingTest/x64/Debug/vc141.pdb
 RenderingTest/x64/Debug/RenderingTest.ilk
 RenderingTest/x64/Debug/RenderingTest.pdb
 *.opendb
+RenderingTest/RenderingTest/RenderingTest.vcxproj
+RenderingTest/RenderingTest/RenderingTest.vcxproj.filters

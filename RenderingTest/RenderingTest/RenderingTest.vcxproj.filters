@@ -50,14 +50,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.h">
-      <Filter>Source\public\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Public\GLRenderContext\GLRenderContext.h">
       <Filter>Source\public\GLRenderContext</Filter>
     </ClInclude>
     <ClInclude Include="Source\Public\scene\scene.h">
       <Filter>Source\public\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\Utils\Utils.h">
+      <Filter>Source\public\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

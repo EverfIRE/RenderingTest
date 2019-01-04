@@ -16,7 +16,7 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(0.0f,0.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+	gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
@@ -41,15 +41,15 @@ void Draw()
 	DrawPlant();
 
 	glPushMatrix();
-	  glTranslatef(-1.0f,0.0f,-2.5f);
-	  glRotatef(30.0f,0.2f,0.0f,0.3f);
+	  glTranslatef(-0.5f,0.0f,-0.7f);
+	  glRotatef(85.0f,-1.0f,0.0f,0.0f);
 	  glScalef(1.0f,1.0f,1.0f);
 	 DrawTriangleStrip();
 	glPopMatrix();
 
 	glRotatef(15.0f, -0.2f, 0.0f, -0.3f);
 	glPushMatrix();
-	  glTranslatef(1.0f, 0.0f, 0.0f);
+	  glTranslatef(0.5f, 0.0f, -0.5f);
 	  DrawTriangle();
 	glPopMatrix();
 }
@@ -171,10 +171,10 @@ void DrawPlant()
 {
 	glBegin(GL_QUADS);
 	glColor4ub(128, 128, 128, 255);
-	glVertex3f(-1.0f, -0.2f, 0.0f);
-	glVertex3f(1.0f, -0.2f, 0.0f);
-	glVertex3f(1.0f, -0.2f, -1.5f);
-	glVertex3f(-1.0f, -0.2f, -1.5f);
+	glVertex3f(-2.0f, -0.2f, 0.0f);
+	glVertex3f(2.0f, -0.2f, 0.0f);
+	glVertex3f(2.0f, -0.2f, -4.5f);
+	glVertex3f(-2.0f, -0.2f, -4.5f);
 	glEnd();
 }
 

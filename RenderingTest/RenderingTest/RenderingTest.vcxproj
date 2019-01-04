@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Public;D:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
+    <IncludePath>G:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Public;G:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -124,7 +124,7 @@
   <ItemGroup>
     <ClInclude Include="Source\Public\GLRenderContext\GLRenderContext.h" />
     <ClInclude Include="Source\Public\scene\scene.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Source\Public\Utils\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
