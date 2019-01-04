@@ -72,6 +72,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>G:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Public;G:\GitHub\RenderingTest\RenderingTest\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>G:\GitHub\RenderingTest\Source\Public;G:\GitHub\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
