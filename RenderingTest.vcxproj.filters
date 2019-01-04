@@ -4,12 +4,6 @@
     <Filter Include="Source">
       <UniqueIdentifier>{b9443c44-182e-4518-8613-144cab1d271f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\public">
-      <UniqueIdentifier>{9bf6cbb8-18c1-452e-a779-79f328887b8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\prviate">
-      <UniqueIdentifier>{03291ac0-12c7-4a52-8b5a-e12b92f4dac8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{4f3bb009-61af-4f84-92cc-c0bfe3cb4cc4}</UniqueIdentifier>
     </Filter>
@@ -19,45 +13,39 @@
     <Filter Include="Shaders\private">
       <UniqueIdentifier>{d843d153-e914-47d2-98a3-9840a3ce40e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\prviate\RenderWindows">
+    <Filter Include="Source\RenderWindows">
       <UniqueIdentifier>{aa0d92d3-42f4-4814-9416-085e519f7c28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\public\GLRenderContext">
-      <UniqueIdentifier>{2daa89d8-8203-41ec-bf6c-2b74d40350fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\public\Scene">
-      <UniqueIdentifier>{c10f63ca-5fa3-48c2-b162-26603fd42259}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\prviate\scene">
+    <Filter Include="Source\scene">
       <UniqueIdentifier>{8bca5b42-cd15-4913-ac49-564420f0e10f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\prviate\Utils">
+    <Filter Include="Source\Utils">
       <UniqueIdentifier>{888c2c20-432a-45d6-a589-8fc474ea30ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\public\Utils">
-      <UniqueIdentifier>{b1d5bfee-1e51-4d56-9722-923ed3a24eff}</UniqueIdentifier>
+    <Filter Include="Source\GLRenderContext">
+      <UniqueIdentifier>{2daa89d8-8203-41ec-bf6c-2b74d40350fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Prviate\RenderWindows\MainRenderWin.cpp">
-      <Filter>Source\prviate\RenderWindows</Filter>
+    <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp">
+      <Filter>Source\RenderWindows</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Prviate\scene\scene.cpp">
-      <Filter>Source\prviate\scene</Filter>
+    <ClCompile Include="Source\scene\scene.cpp">
+      <Filter>Source\scene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Prviate\Utils\Utils.cpp">
-      <Filter>Source\prviate\Utils</Filter>
+    <ClCompile Include="Source\Utils\Utils.cpp">
+      <Filter>Source\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Public\GLRenderContext\GLRenderContext.h">
-      <Filter>Source\public\GLRenderContext</Filter>
+    <ClInclude Include="Source\GLRenderContext\GLRenderContext.h">
+      <Filter>Source\GLRenderContext</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Public\scene\scene.h">
-      <Filter>Source\public\Scene</Filter>
+    <ClInclude Include="Source\scene\scene.h">
+      <Filter>Source\scene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Public\Utils\Utils.h">
-      <Filter>Source\public\Utils</Filter>
+    <ClInclude Include="Source\Utils\Utils.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
