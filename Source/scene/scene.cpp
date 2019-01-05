@@ -1,6 +1,9 @@
 //ThisFile Is about all Scene 
 
 #include "scene/scene.h"
+#include "Utils/Utils.h"
+
+GLuint texture;
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -9,6 +12,13 @@ void Init()
 	gluPerspective(50.0f,1280.0f/720.0f,0.01f,1000.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
+	int nFileSize = 0;
+	unsigned char* bmpFileContent = LoadFileContent("Test.bmp", nFileSize);
+	int bmpWidth = 0, bmpHeight = 0;
+	unsigned char*pixelData = DecodeBMP(bmpFileContent, bmpWidth, bmpHeight);
+	texture = CreateTexture2D(pixelData, bmpWidth, bmpHeight, GL_RGB);
+
 }
 
 void Draw()
@@ -19,6 +29,8 @@ void Draw()
 	gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture);
 
 	float LightPosp[] = { 0.5f,0.0f,0.0f,0.5f };
 	glLightfv(GL_LIGHT0, GL_POSITION, LightPosp);
@@ -38,20 +50,23 @@ void Draw()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
 
+	glScalef(0.5f, 0.5f, 0.5f);
+	glRotatef(30.0f, -1.0f, 0.0f, 0.0f);
+	glTranslatef(0.0f, 0.0f, -2.0f);
 	DrawPlant();
 
-	glPushMatrix();
-	  glTranslatef(-0.5f,0.0f,-0.7f);
-	  glRotatef(85.0f,-1.0f,0.0f,0.0f);
-	  glScalef(1.0f,1.0f,1.0f);
-	 DrawTriangleStrip();
-	glPopMatrix();
+	//glPushMatrix();
+	//  glTranslatef(-0.5f,0.0f,-0.7f);
+	//  glRotatef(85.0f,-1.0f,0.0f,0.0f);
+	//  glScalef(1.0f,1.0f,1.0f);
+	// DrawTriangleStrip();
+	//glPopMatrix();
 
-	glRotatef(15.0f, -0.2f, 0.0f, -0.3f);
-	glPushMatrix();
-	  glTranslatef(0.5f, 0.0f, -0.5f);
-	  DrawTriangle();
-	glPopMatrix();
+	//glRotatef(15.0f, -0.2f, 0.0f, -0.3f);
+	//glPushMatrix();
+	//  glTranslatef(0.5f, 0.0f, -0.5f);
+	//  DrawTriangle();
+	//glPopMatrix();
 }
 
 /**----------------------DrawTestScene--------------------**/
@@ -171,10 +186,10 @@ void DrawPlant()
 {
 	glBegin(GL_QUADS);
 	glColor4ub(128, 128, 128, 255);
-	glVertex3f(-2.0f, -0.2f, 0.0f);
-	glVertex3f(2.0f, -0.2f, 0.0f);
-	glVertex3f(2.0f, -0.2f, -4.5f);
-	glVertex3f(-2.0f, -0.2f, -4.5f);
+	glTexCoord2d(0.0f,0.0f); glVertex3f(-2.0f, -0.2f, 0.0f);
+	glTexCoord2d(1.f, 0.0f); glVertex3f(2.0f, -0.2f, 0.0f);
+	glTexCoord2d(1.f, 1.f); glVertex3f(2.0f, -0.2f, -4.5f);
+	glTexCoord2d(0.0f, 1.f); glVertex3f(-2.0f, -0.2f, -4.5f);
 	glEnd();
 }
 

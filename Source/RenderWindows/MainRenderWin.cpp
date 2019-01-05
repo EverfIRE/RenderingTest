@@ -5,29 +5,6 @@
 #pragma comment(lib,"opengl32.lib")
 #pragma comment(lib,"glu32.lib")
 
-unsigned char * LoadFileContent(const char * path, int & filesize)
-{
-	unsigned char* filecontent = nullptr;
-	filesize = 0;
-	FILE* pFile = fopen(path, "rb");
-
-	if (pFile)
-	{
-		fseek(pFile,0,SEEK_END);
-		int nLen = ftell(pFile);
-		if (nLen>0)
-		{
-			rewind(pFile);
-			filecontent = new unsigned char[nLen + 1];
-			fread(filecontent,sizeof(unsigned char),nLen,pFile);
-			filecontent[nLen] = '\0';
-			filesize = nLen;
-		}
-		fclose(pFile);
-	}
-	return filecontent;
-}
-
 LRESULT CALLBACK RenderTesProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
