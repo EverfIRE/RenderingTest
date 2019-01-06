@@ -10,4 +10,3 @@
 #include <sstream>
 #include <vector>
 #include <functional>
-

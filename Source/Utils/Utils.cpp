@@ -2,6 +2,29 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Utils/Utils.h"
 
+char* SelectFile(HWND pHwnd)
+{
+	char szFilePath[1024] = { 0 };   // 所选择的文件最终的路径
+	OPENFILENAME ofn = { 0 };
+	ofn.lStructSize = sizeof(ofn);
+	ofn.hwndOwner = pHwnd;
+	ofn.lpstrFilter = "bmp文件(*.bmp)\0";//要选择的文件后缀   
+	ofn.lpstrInitialDir = "./";//默认的文件路径   
+	ofn.lpstrFile = szFilePath;//存放文件的缓冲区   
+	ofn.nMaxFile = sizeof(szFilePath) / sizeof(*szFilePath);
+	ofn.nFilterIndex = 0;
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_EXPLORER; //标志如果是多选要加上OFN_ALLOWMULTISELECT 
+	if (!GetOpenFileName(&ofn))
+	{
+		return szFilePath;
+	}
+	if (strcmp(szFilePath, "") == 0)
+	{
+		// 检验是否获取成功
+		return szFilePath;
+	}
+}
+
 unsigned char * LoadFileContent(const char * path, int & filesize)
 {
 	unsigned char* filecontent = nullptr;
@@ -62,5 +85,25 @@ GLuint CreateTexture2D(unsigned char * pixelData, int width, int height, GLenum 
 	glTexImage2D(GL_TEXTURE_2D,0,type,width,height,0,type,GL_UNSIGNED_BYTE,pixelData);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
+	return texture;
+}
+
+GLuint CreateTextureToBMP(const char * bmpPath)
+{
+	int nFileSize = 0;
+	unsigned char* bmpFileContent = LoadFileContent(bmpPath, nFileSize);
+	if (bmpFileContent==nullptr)
+	{
+		return 0;
+	}
+	int bmpWidth = 0, bmpHeight = 0;
+	unsigned char*pixelData = DecodeBMP(bmpFileContent, bmpWidth, bmpHeight);
+	if (bmpWidth==0)
+	{
+		delete bmpFileContent;
+		return 0;
+	}
+	GLuint 	texture = CreateTexture2D(pixelData, bmpWidth, bmpHeight, GL_RGB);
+	delete bmpFileContent;
 	return texture;
 }

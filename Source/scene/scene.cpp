@@ -12,23 +12,21 @@ void Init()
 	gluPerspective(50.0f,1280.0f/720.0f,0.01f,1000.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
-	int nFileSize = 0;
-	unsigned char* bmpFileContent = LoadFileContent("Test.bmp", nFileSize);
-	int bmpWidth = 0, bmpHeight = 0;
-	unsigned char*pixelData = DecodeBMP(bmpFileContent, bmpWidth, bmpHeight);
-	texture = CreateTexture2D(pixelData, bmpWidth, bmpHeight, GL_RGB);
-
+	texture = CreateTextureToBMP("Test.bmp");
 }
 
 void Draw()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+
+	glEnable(GL_DEPTH_TEST);
+
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -49,6 +47,11 @@ void Draw()
 
 	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
+
+	glPushMatrix();
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	DrawTriangle();
+	glPopMatrix();
 
 	glScalef(0.5f, 0.5f, 0.5f);
 	glRotatef(30.0f, -1.0f, 0.0f, 0.0f);
@@ -73,9 +76,9 @@ void Draw()
 void DrawTriangle()
 {
 	glBegin(GL_TRIANGLES);
-	glColor4ub(255, 0, 0, 255); glVertex3f(-0.2f, -0.2f, -1.5f);
-	glColor4ub(0, 255, 0, 255); glVertex3f( 0.2f, -0.2f, -1.5f);
-	glColor4ub(0, 0, 255, 255); glVertex3f( 0.0f,  0.2f, -1.5f);
+	glTexCoord2d(0.0f,0.0f); glVertex3f(-0.2f, -0.2f, -1.5f);
+	glTexCoord2d(1.0f,0.0f); glVertex3f( 0.2f, -0.2f, -1.5f);
+	glTexCoord2d(0.5f,1.0f); glVertex3f( 0.0f,  0.2f, -1.5f);
 	glEnd();
 }
 
