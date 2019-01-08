@@ -73,7 +73,7 @@
     <IncludePath>D:\GitHub\RenderingTest\Source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\GitHub\RenderingTest\Source\Public;G:\GitHub\RenderingTest\Source\Prviate;$(IncludePath)</IncludePath>
+    <IncludePath>G:\GitHub\RenderingTest\Source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,11 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sky.cpp" />
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp" />
     <ClCompile Include="Source\scene\scene.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sky.h" />
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h" />
     <ClInclude Include="Source\scene\scene.h" />
     <ClInclude Include="Source\Utils\Utils.h" />

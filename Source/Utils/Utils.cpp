@@ -1,27 +1,27 @@
-#pragma once
+ï»¿#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include "Utils/Utils.h"
 
-char* SelectFile(HWND pHwnd)
+string SelectFile(HWND pHwnd)
 {
-	char szFilePath[1024] = { 0 };   // ËùÑ¡ÔñµÄÎÄ¼ş×îÖÕµÄÂ·¾¶
+	TCHAR szBuffer[MAX_PATH] = { 0 };
 	OPENFILENAME ofn = { 0 };
 	ofn.lStructSize = sizeof(ofn);
-	ofn.hwndOwner = pHwnd;
-	ofn.lpstrFilter = "bmpÎÄ¼ş(*.bmp)\0";//ÒªÑ¡ÔñµÄÎÄ¼şºó×º   
-	ofn.lpstrInitialDir = "./";//Ä¬ÈÏµÄÎÄ¼şÂ·¾¶   
-	ofn.lpstrFile = szFilePath;//´æ·ÅÎÄ¼şµÄ»º³åÇø   
-	ofn.nMaxFile = sizeof(szFilePath) / sizeof(*szFilePath);
+	ofn.hwndOwner = NULL;
+	ofn.lpstrFilter = ("Exeæ–‡ä»¶(*.exe)\0*.exe\0æ‰€æœ‰æ–‡ä»¶(*.*)\0*.*\0");//è¦é€‰æ‹©çš„æ–‡ä»¶åç¼€Â Â Â 
+	ofn.lpstrInitialDir = ("D:\\ProgramÂ Files");//é»˜è®¤çš„æ–‡ä»¶è·¯å¾„Â Â Â 
+	ofn.lpstrFile = szBuffer;//å­˜æ”¾æ–‡ä»¶çš„ç¼“å†²åŒºÂ Â Â 
+	ofn.nMaxFile = sizeof(szBuffer) / sizeof(*szBuffer);
 	ofn.nFilterIndex = 0;
-	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_EXPLORER; //±êÖ¾Èç¹ûÊÇ¶àÑ¡Òª¼ÓÉÏOFN_ALLOWMULTISELECT 
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_EXPLORER;//æ ‡å¿—å¦‚æœæ˜¯å¤šé€‰è¦åŠ ä¸ŠOFN_ALLOWMULTISELECTÂ Â 
 	if (!GetOpenFileName(&ofn))
 	{
-		return szFilePath;
+		MessageBox(NULL, TEXT("è·å–å¤±è´¥"), NULL, MB_ICONERROR);
+		return NULL;
 	}
-	if (strcmp(szFilePath, "") == 0)
+	else
 	{
-		// ¼ìÑéÊÇ·ñ»ñÈ¡³É¹¦
-		return szFilePath;
+		return szBuffer;
 	}
 }
 
@@ -73,15 +73,15 @@ GLuint CreateTexture2D(unsigned char * pixelData, int width, int height, GLenum 
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D,texture);
 
-	//Í¼Æ¬´óÌùĞ¡ºÍÍ¼Æ¬Ğ¡Ìù´óµÄ±íÃæµÄÊ±ºò²ÉÑùÄ£Ê½ÉèÖÃ
+	//å›¾ç‰‡å¤§è´´å°å’Œå›¾ç‰‡å°è´´å¤§çš„è¡¨é¢çš„æ—¶å€™é‡‡æ ·æ¨¡å¼è®¾ç½®
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-	//µ±UV³¬³ö0-1¿Õ¼äÊ±µÄ²ÉÑùÄ£Ê½
+	//å½“UVè¶…å‡º0-1ç©ºé—´æ—¶çš„é‡‡æ ·æ¨¡å¼
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	//´«µİÎÆÀíÊı¾İµ½GPU, 1£ºÎÆÀíÀàĞÍ  2:mipmap¼¶±ğ 3:ÎÆÀíÊı¾İÔÚGPUÉÏµÄ¸ñÊ½ 4:ÏñËØ¿í 5:ÏñËØ¸ß 6:border£¨0£© 7:ÎÆÀíÊı¾İÔÚÄÚ´æÉÏµÄ¸ñÊ½ 8:ÏñËØÊı¾İÖĞ·ÖÁ¿µÄÀàĞÍ 9:
+	//ä¼ é€’çº¹ç†æ•°æ®åˆ°GPU, 1ï¼šçº¹ç†ç±»å‹  2:mipmapçº§åˆ« 3:çº¹ç†æ•°æ®åœ¨GPUä¸Šçš„æ ¼å¼ 4:åƒç´ å®½ 5:åƒç´ é«˜ 6:borderï¼ˆ0ï¼‰ 7:çº¹ç†æ•°æ®åœ¨å†…å­˜ä¸Šçš„æ ¼å¼ 8:åƒç´ æ•°æ®ä¸­åˆ†é‡çš„ç±»å‹ 9:
 	glTexImage2D(GL_TEXTURE_2D,0,type,width,height,0,type,GL_UNSIGNED_BYTE,pixelData);
 	glBindTexture(GL_TEXTURE_2D, 0);
 

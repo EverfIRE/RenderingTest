@@ -24,11 +24,13 @@ void Draw()
 
 	glEnable(GL_DEPTH_TEST);
 
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
+	//Enable And Bind Texture
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture);
+
+	//Setting Opengl Diffuse Lighting
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 
 	float LightPosp[] = { 0.5f,0.0f,0.0f,0.5f };
 	glLightfv(GL_LIGHT0, GL_POSITION, LightPosp);
@@ -48,6 +50,7 @@ void Draw()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
 
+	//Render Model
 	glPushMatrix();
 	glTranslatef(0.0f, -0.5f, 0.0f);
 	DrawTriangle();
