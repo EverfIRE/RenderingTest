@@ -42,7 +42,7 @@
     <ClCompile Include="Source\Utils\Utils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Sky.cpp">
+    <ClCompile Include="Source\Actor\Sky\Sky.cpp">
       <Filter>Source\Actor\Sky</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClInclude Include="Source\Utils\Utils.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Sky.h">
+    <ClInclude Include="Source\Actor\Sky\Sky.h">
       <Filter>Source\Actor\Sky</Filter>
     </ClInclude>
   </ItemGroup>

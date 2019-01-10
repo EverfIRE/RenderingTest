@@ -120,13 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sky.cpp" />
+    <ClCompile Include="Source\Actor\Sky\Sky.cpp" />
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp" />
     <ClCompile Include="Source\scene\scene.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sky.h" />
+    <ClInclude Include="Source\Actor\Sky\Sky.h" />
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h" />
     <ClInclude Include="Source\scene\scene.h" />
     <ClInclude Include="Source\Utils\Utils.h" />

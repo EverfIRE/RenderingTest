@@ -68,3 +68,4 @@ RenderingTest/x64/Debug/RenderingTest.pdb
 *.opendb
 RenderingTest/RenderingTest/RenderingTest.vcxproj
 RenderingTest/RenderingTest/RenderingTest.vcxproj.filters
+*.enc

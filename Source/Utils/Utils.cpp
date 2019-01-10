@@ -1,14 +1,15 @@
 ﻿#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include "Utils/Utils.h"
+using namespace std;
 
-string SelectFile(HWND pHwnd)
+char* SelectFile(HWND pHwnd)
 {
-	TCHAR szBuffer[MAX_PATH] = { 0 };
+	char szBuffer[MAX_PATH] = {0};
 	OPENFILENAME ofn = { 0 };
 	ofn.lStructSize = sizeof(ofn);
 	ofn.hwndOwner = NULL;
-	ofn.lpstrFilter = ("Exe文件(*.exe)\0*.exe\0所有文件(*.*)\0*.*\0");//要选择的文件后缀   
+	ofn.lpstrFilter = ("bmp文件(*.bmp)\0*.bmp\0所有文件(*.*)\0*.*\0");//要选择的文件后缀   
 	ofn.lpstrInitialDir = ("D:\\Program Files");//默认的文件路径   
 	ofn.lpstrFile = szBuffer;//存放文件的缓冲区   
 	ofn.nMaxFile = sizeof(szBuffer) / sizeof(*szBuffer);
@@ -21,11 +22,12 @@ string SelectFile(HWND pHwnd)
 	}
 	else
 	{
+		MessageBox(NULL, szBuffer, NULL, MB_ICONMASK);
 		return szBuffer;
 	}
 }
 
-unsigned char * LoadFileContent(const char * path, int & filesize)
+unsigned char* LoadFileContent(char* path, int & filesize)
 {
 	unsigned char* filecontent = nullptr;
 	filesize = 0;
@@ -88,10 +90,10 @@ GLuint CreateTexture2D(unsigned char * pixelData, int width, int height, GLenum 
 	return texture;
 }
 
-GLuint CreateTextureToBMP(const char * bmpPath)
+GLuint CreateTextureToBMP()
 {
 	int nFileSize = 0;
-	unsigned char* bmpFileContent = LoadFileContent(bmpPath, nFileSize);
+	unsigned char* bmpFileContent = LoadFileContent(SelectFile(NULL), nFileSize);
 	if (bmpFileContent==nullptr)
 	{
 		return 0;

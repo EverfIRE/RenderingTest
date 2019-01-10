@@ -2,8 +2,10 @@
 
 #include "scene/scene.h"
 #include "Utils/Utils.h"
+#include "Actor/Sky/Sky.h"
 
 GLuint texture;
+Sky BoxSky;
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -12,7 +14,7 @@ void Init()
 	gluPerspective(50.0f,1280.0f/720.0f,0.01f,1000.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	texture = CreateTextureToBMP("Test.bmp");
+	texture = CreateTextureToBMP();
 }
 
 void Draw()
@@ -21,6 +23,8 @@ void Draw()
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+
+	BoxSky.BoxSky();
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -51,15 +55,16 @@ void Draw()
 	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
 
 	//Render Model
-	glPushMatrix();
-	glTranslatef(0.0f, -0.5f, 0.0f);
-	DrawTriangle();
-	glPopMatrix();
+	//glPushMatrix();
+	//glTranslatef(0.0f, -0.5f, 0.0f);
+	//DrawTriangle();
+	//glPopMatrix();
 
-	glScalef(0.5f, 0.5f, 0.5f);
-	glRotatef(30.0f, -1.0f, 0.0f, 0.0f);
-	glTranslatef(0.0f, 0.0f, -2.0f);
-	DrawPlant();
+	//glScalef(0.5f, 0.5f, 0.5f);
+	//glRotatef(30.0f, -1.0f, 0.0f, 0.0f);
+	//glTranslatef(0.0f, 0.0f, -2.0f);
+	//DrawPlant();
+
 
 	//glPushMatrix();
 	//  glTranslatef(-0.5f,0.0f,-0.7f);
