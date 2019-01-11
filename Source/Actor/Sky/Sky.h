@@ -6,7 +6,7 @@ class Sky
 public:
 	Sky();
 	~Sky();
-
+	void Init(const char*imageDir);
 	void BoxSky();
 };
 

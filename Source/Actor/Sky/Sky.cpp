@@ -10,6 +10,10 @@ Sky::~Sky()
 {
 }
 
+void Sky::Init(const char * imageDir)
+{
+}
+
 void Sky::BoxSky()
 {
 	//front

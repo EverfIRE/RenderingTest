@@ -1,11 +1,11 @@
 ﻿#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include "Utils/Utils.h"
-using namespace std;
+
+char szBuffer[MAX_PATH] = { 0 };
 
 char* SelectFile(HWND pHwnd)
 {
-	char szBuffer[MAX_PATH] = {0};
 	OPENFILENAME ofn = { 0 };
 	ofn.lStructSize = sizeof(ofn);
 	ofn.hwndOwner = NULL;
@@ -31,6 +31,7 @@ unsigned char* LoadFileContent(char* path, int & filesize)
 {
 	unsigned char* filecontent = nullptr;
 	filesize = 0;
+
 	FILE* pFile = fopen(path, "rb");
 
 	if (pFile)
