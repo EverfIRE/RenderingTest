@@ -1,8 +1,9 @@
 #pragma once
-#include "GLRenderContext/GLRenderContext.h"
 
 class Sky
 {
+private:
+	GLuint skyTexture[6];
 public:
 	Sky();
 	~Sky();
