@@ -7,7 +7,7 @@ private:
 public:
 	Sky();
 	~Sky();
-	void Init(const char*imageDir);
+	void Init();
 	void BoxSky();
 };
 

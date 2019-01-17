@@ -11,7 +11,7 @@ Sky::~Sky()
 {
 }
 
-void Sky::Init(const char * imageDir)
+void Sky::Init()
 {
 	skyTexture[0] = CreateTextureToBMP();
 	skyTexture[1] = CreateTextureToBMP();

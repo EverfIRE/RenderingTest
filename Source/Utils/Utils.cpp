@@ -17,12 +17,12 @@ char* SelectFile(HWND pHwnd)
 	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_EXPLORER;//标志如果是多选要加上OFN_ALLOWMULTISELECT  
 	if (!GetOpenFileName(&ofn))
 	{
-		MessageBox(NULL, TEXT("获取失败"), NULL, MB_ICONERROR);
+		MessageBox(NULL, TEXT("获取失败"), "提示", MB_ICONERROR);
 		return NULL;
 	}
 	else
 	{
-		MessageBox(NULL, szBuffer, NULL, MB_ICONMASK);
+		MessageBox(NULL, szBuffer, "提示", NULL);
 		return szBuffer;
 	}
 }
@@ -102,6 +102,43 @@ GLuint CreateTextureToBMP()
 	int bmpWidth = 0, bmpHeight = 0;
 	unsigned char*pixelData = DecodeBMP(bmpFileContent, bmpWidth, bmpHeight);
 	if (bmpWidth==0)
+	{
+		delete bmpFileContent;
+		return 0;
+	}
+	GLuint 	texture = CreateTexture2D(pixelData, bmpWidth, bmpHeight, GL_RGB);
+	delete bmpFileContent;
+	return texture;
+}
+
+GLuint CreateDefaultBMP(const char* vaule)
+{
+	int nFileSize = 0;
+	unsigned char* filecontent = nullptr;
+	FILE* pFile = fopen(vaule, "rb");
+
+	if (pFile)
+	{
+		fseek(pFile, 0, SEEK_END);
+		int nLen = ftell(pFile);
+		if (nLen > 0)
+		{
+			rewind(pFile);
+			filecontent = new unsigned char[nLen + 1];
+			fread(filecontent, sizeof(unsigned char), nLen, pFile);
+			filecontent[nLen] = '\0';
+			nFileSize = nLen;
+		}
+		fclose(pFile);
+	}
+	unsigned char* bmpFileContent = filecontent;
+	if (bmpFileContent == nullptr)
+	{
+		return 0;
+	}
+	int bmpWidth = 0, bmpHeight = 0;
+	unsigned char*pixelData = DecodeBMP(bmpFileContent, bmpWidth, bmpHeight);
+	if (bmpWidth == 0)
 	{
 		delete bmpFileContent;
 		return 0;
