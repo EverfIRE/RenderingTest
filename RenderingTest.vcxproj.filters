@@ -45,6 +45,12 @@
     <ClCompile Include="Source\Actor\Sky\Sky.cpp">
       <Filter>Source\Actor\Sky</Filter>
     </ClCompile>
+    <ClCompile Include="Source\scene\Texture.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\Model.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h">
@@ -58,6 +64,15 @@
     </ClInclude>
     <ClInclude Include="Source\Actor\Sky\Sky.h">
       <Filter>Source\Actor\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Texture.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Model.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Struct.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -122,13 +122,18 @@
   <ItemGroup>
     <ClCompile Include="Source\Actor\Sky\Sky.cpp" />
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp" />
+    <ClCompile Include="Source\scene\Model.cpp" />
     <ClCompile Include="Source\scene\scene.cpp" />
+    <ClCompile Include="Source\scene\Texture.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Actor\Sky\Sky.h" />
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h" />
+    <ClInclude Include="Source\scene\Model.h" />
     <ClInclude Include="Source\scene\scene.h" />
+    <ClInclude Include="Source\scene\Texture.h" />
+    <ClInclude Include="Source\Utils\Struct.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
