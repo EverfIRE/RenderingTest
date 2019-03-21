@@ -13,9 +13,11 @@ Texture::~Texture()
 
 void Texture::Init(char * TexPath)
 {
-	ImageType _imageType;
+	ImageType _imageType = ImageType::BMP;
+
 	int _fileSize;
 	unsigned char* fileData = LoadFileContent(TexPath,_fileSize);
+
 	switch (_imageType)
 	{
 		case ImageType::BMP:
@@ -50,3 +52,5 @@ unsigned char * Texture::DecodeBMP(unsigned char * bmpFileData)
 	}
 	return nullptr;
 }
+
+

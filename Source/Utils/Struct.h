@@ -1,3 +1,4 @@
+#pragma once
 //All Common Struct
 
 struct QImageSize
@@ -12,9 +13,27 @@ struct QVector2D
 	float y;
 };
 
+struct QFaceIndex
+{
+	int posIndex;
+	int texcoordIndex;
+	int normalIndex;
+};
+
 struct QVector3D
 {
 	float x;
 	float y;
 	float z;
+};
+
+struct QFloatData {
+	float v[3];
+};
+
+struct QTransform
+{
+	QVector3D Position = {0.0f,0.0f,0.0f};
+	QVector3D Rotation = { 0.0f,0.0f,0.0f };
+	QVector3D Scale = { 1.0f,1.0f,1.0f };
 };

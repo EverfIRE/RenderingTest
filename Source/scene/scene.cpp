@@ -3,9 +3,11 @@
 #include "scene/scene.h"
 #include "Utils/Utils.h"
 #include "Actor/Sky/Sky.h"
+#include "Model.h"
 
 GLuint texture;
-Sky BoxSky;
+Sky aSky;
+Model model;
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -14,8 +16,11 @@ void Init()
 	gluPerspective(50.0f,1280.0f/720.0f,0.01f,1000.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	BoxSky.Init();
+
 	texture = CreateDefaultBMP("Default.bmp");
+	aSky.Init("Resource/Res_skybox/");
+	model.Init("Resource/SceneOBJ/Sphere.obj");	
+	model.mTexture = CreateDefaultBMP("Resource/earth.bmp");
 }
 
 void Draw()
@@ -23,61 +28,10 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_DEPTH_TEST);
-
-	//Enable And Bind Texture
-	//glBindTexture(GL_TEXTURE_2D, texture);
-
-	//Setting Opengl Diffuse Lighting
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
-	float LightPosp[] = { 0.5f,0.0f,0.0f,0.5f };
-	glLightfv(GL_LIGHT0, GL_POSITION, LightPosp);
-	
-	float whiteColor[] = {1.0f,1.0f,1.0f,1.0f};
-	float ambientMat[] = {0.07f,0.07f,0.07f,1.0f};
-	float diffuseMat[] = { 0.4f,0.4f,0.4f,1.0f };
-	float specularMat[] = { 0.9f,0.9f,0.9f,1.0f };
-	float blackColor[] = { 0.0f,0.0f,0.0f,1.0f };
-
-	glLightfv(GL_LIGHT0, GL_AMBIENT, whiteColor);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, ambientMat);
-
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteColor);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMat);
-
-	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);
-
-	BoxSky.BoxSky();
-
-	//Render Model
-	//glPushMatrix();
-	//glTranslatef(0.0f, -0.5f, 0.0f);
-	DrawTriangle();
-	//glPopMatrix();
-
-	//glScalef(0.5f, 0.5f, 0.5f);
-	//glRotatef(30.0f, -1.0f, 0.0f, 0.0f);
-	//glTranslatef(0.0f, 0.0f, -2.0f);
-	//DrawPlant();
-
-
-	//glPushMatrix();
-	//  glTranslatef(-0.5f,0.0f,-0.7f);
-	//  glRotatef(85.0f,-1.0f,0.0f,0.0f);
-	//  glScalef(1.0f,1.0f,1.0f);
-	// DrawTriangleStrip();
-	//glPopMatrix();
-
-	//glRotatef(15.0f, -0.2f, 0.0f, -0.3f);
-	//glPushMatrix();
-	//  glTranslatef(0.5f, 0.0f, -0.5f);
-	//  DrawTriangle();
-	//glPopMatrix();
+	//gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+	//aSky.Draw();
+	model.Draw();
+	//DrawTriangle();
 }
 
 /**----------------------DrawTestScene--------------------**/
@@ -206,3 +160,27 @@ void DrawPlant()
 }
 
 
+//Enable And Bind Texture
+//glBindTexture(GL_TEXTURE_2D, texture);
+
+//Setting Opengl Diffuse Lighting
+//glEnable(GL_LIGHTING);
+//glEnable(GL_LIGHT0);
+
+//float LightPosp[] = { 0.5f,0.0f,0.0f,0.5f };
+//glLightfv(GL_LIGHT0, GL_POSITION, LightPosp);
+//
+//float whiteColor[] = {1.0f,1.0f,1.0f,1.0f};
+//float ambientMat[] = {0.07f,0.07f,0.07f,1.0f};
+//float diffuseMat[] = { 0.4f,0.4f,0.4f,1.0f };
+//float specularMat[] = { 0.9f,0.9f,0.9f,1.0f };
+//float blackColor[] = { 0.0f,0.0f,0.0f,1.0f };
+
+//glLightfv(GL_LIGHT0, GL_AMBIENT, whiteColor);
+//glMaterialfv(GL_FRONT, GL_AMBIENT, ambientMat);
+
+//glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteColor);
+//glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMat);
+
+//glLightfv(GL_LIGHT0, GL_SPECULAR, whiteColor);
+//glMaterialfv(GL_FRONT, GL_SPECULAR, specularMat);

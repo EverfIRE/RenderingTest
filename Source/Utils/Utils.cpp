@@ -76,15 +76,16 @@ GLuint CreateTexture2D(unsigned char * pixelData, int width, int height, GLenum 
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D,texture);
 
-	//图片大贴小和图片小贴大的表面的时候采样模式设置
+	//Sampling mode setting when the picture is big and small and the picture is small
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-	//当UV超出0-1空间时的采样模式
+	//Sampling mode when UV exceeds 0-1 space
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	//传递纹理数据到GPU, 1：纹理类型  2:mipmap级别 3:纹理数据在GPU上的格式 4:像素宽 5:像素高 6:border（0） 7:纹理数据在内存上的格式 8:像素数据中分量的类型 9:
+	//Pass texture data to GPU, 1: texture type 2: mipmap level 3: texture data on GPU format 4: pixel width 
+							  //5: pixel height 6: border(0) 7: texture data in memory format 8: pixel data Type of medium component 9:PixelData
 	glTexImage2D(GL_TEXTURE_2D,0,type,width,height,0,type,GL_UNSIGNED_BYTE,pixelData);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -146,4 +147,13 @@ GLuint CreateDefaultBMP(const char* vaule)
 	GLuint 	texture = CreateTexture2D(pixelData, bmpWidth, bmpHeight, GL_RGB);
 	delete bmpFileContent;
 	return texture;
+}
+
+GLuint CreateDisplayList(std::function<void()> foo)
+{
+	GLuint displayList=glGenLists(1);
+	glNewList(displayList,GL_COMPILE);
+	foo();
+	glEndList();
+	return displayList;
 }

@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\GitHub\RenderingTest\Source;$(IncludePath)</IncludePath>
+    <IncludePath>.\Source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>G:\GitHub\RenderingTest\Source;$(IncludePath)</IncludePath>
@@ -133,6 +133,7 @@
     <ClInclude Include="Source\scene\Model.h" />
     <ClInclude Include="Source\scene\scene.h" />
     <ClInclude Include="Source\scene\Texture.h" />
+    <ClInclude Include="Source\Utils\Enum.h" />
     <ClInclude Include="Source\Utils\Struct.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
   </ItemGroup>

@@ -4,10 +4,10 @@ class Sky
 {
 private:
 	GLuint skyTexture[6];
+	GLuint fastDrawCall;
 public:
-	Sky();
-	~Sky();
-	void Init();
-	void BoxSky();
+	void Init(const char*imageDir);
+	void DrawCommand();
+	void Draw();
 };
 

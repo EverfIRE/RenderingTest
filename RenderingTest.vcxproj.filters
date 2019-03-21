@@ -74,5 +74,8 @@
     <ClInclude Include="Source\Utils\Struct.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utils\Enum.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

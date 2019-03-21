@@ -12,3 +12,5 @@ GLuint CreateTexture2D(unsigned char* pixelData,int width,int height,GLenum type
 GLuint CreateTextureToBMP();
 
 GLuint CreateDefaultBMP(const char* vaule);
+
+GLuint CreateDisplayList(std::function<void()>foo);

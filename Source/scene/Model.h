@@ -1,29 +1,28 @@
 #include "Utils/Struct.h"
+#include <Utils/Enum.h>
+#include "Utils/Utils.h"
 
+struct QVertexData {
+	float position[3];
+	float normal[3];
+	float texcoord[2];
+};
 class Model
 {
+	QVertexData*mVertexesData;
+	unsigned short* mIndexes;
+	int mIndexCount;
+
+//public function
 public:
-	Model(char*TexPath);
-	~Model();
-
-	struct QTransform
-	{
-		QVector3D Position;
-		QVector3D Rotation = {0.0f,0.0f,0.0f};
-		QVector3D Scale = {1.0f,1.0f,1.0f};
-	};
-
+	GLuint mTexture;
+	Model();
+	void Init(const char*TexPath);
+	void Draw();
 //private variable
 private:
-	enum ModelType
-	{
-		THREEDS=1,
-		OBJ=2,
-		FBX=3,
-		DEFAULT=4,
-	};
+
 //Private Function
 private:
-	void Init(char*TexPath);
 	unsigned char * DecodeObj(unsigned char * bmpFileData);
 };
