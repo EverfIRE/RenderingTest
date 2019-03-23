@@ -20,6 +20,12 @@ struct QFaceIndex
 	int normalIndex;
 };
 
+struct QVertexData {
+	float position[3];
+	float normal[3];
+	float texcoord[2];
+};
+
 struct QVector3D
 {
 	float x;

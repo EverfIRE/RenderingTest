@@ -120,18 +120,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Actor\Sky\Sky.cpp" />
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp" />
+    <ClCompile Include="Source\scene\BaseLight.cpp" />
+    <ClCompile Include="Source\scene\DirectionLight.cpp" />
+    <ClCompile Include="Source\scene\Ground.cpp" />
     <ClCompile Include="Source\scene\Model.cpp" />
+    <ClCompile Include="Source\scene\Object.cpp" />
     <ClCompile Include="Source\scene\scene.cpp" />
+    <ClCompile Include="Source\scene\Sky.cpp" />
     <ClCompile Include="Source\scene\Texture.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Actor\Sky\Sky.h" />
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h" />
+    <ClInclude Include="Source\scene\BaseLight.h" />
+    <ClInclude Include="Source\scene\DirectionLight.h" />
+    <ClInclude Include="Source\scene\Ground.h" />
     <ClInclude Include="Source\scene\Model.h" />
+    <ClInclude Include="Source\scene\Object.h" />
     <ClInclude Include="Source\scene\scene.h" />
+    <ClInclude Include="Source\scene\Sky.h" />
     <ClInclude Include="Source\scene\Texture.h" />
     <ClInclude Include="Source\Utils\Enum.h" />
     <ClInclude Include="Source\Utils\Struct.h" />

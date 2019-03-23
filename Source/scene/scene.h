@@ -1,6 +1,6 @@
 //ThisFile Is about all Scene 
-
 #pragma once
+
 #include "GLRenderContext/GLRenderContext.h"
 
 //Init Scene Draw Context

@@ -2,11 +2,6 @@
 #include <Utils/Enum.h>
 #include "Utils/Utils.h"
 
-struct QVertexData {
-	float position[3];
-	float normal[3];
-	float texcoord[2];
-};
 class Model
 {
 	QVertexData*mVertexesData;

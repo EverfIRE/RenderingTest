@@ -2,39 +2,53 @@
 #include "Sky.h"
 #include "Utils/Utils.h"
 
-void Sky::Init(const char*imageDir)
+void Sky::Init(const char*imageDir, bool _enableDraw, bool _enableLight)
 {
-	char temp[256];
-	memset(temp,0,256);
-	strcpy(temp,imageDir);
-	strcat(temp,"front.bmp");
-	skyTexture[0] = CreateDefaultBMP(temp);
-	memset(temp, 0, 256);
-	strcpy(temp, imageDir);
-	strcat(temp, "back.bmp");
-	skyTexture[1] = CreateDefaultBMP(temp);
-	memset(temp, 0, 256);
-	strcpy(temp, imageDir);
-	strcat(temp, "left.bmp");
-	skyTexture[2] = CreateDefaultBMP(temp);
-	memset(temp, 0, 256);
-	strcpy(temp, imageDir);
-	strcat(temp, "right.bmp");
-	skyTexture[3] = CreateDefaultBMP(temp);
-	memset(temp, 0, 256);
-	strcpy(temp, imageDir);
-	strcat(temp, "top.bmp");
-	skyTexture[4] = CreateDefaultBMP(temp);
-	memset(temp, 0, 256);
-	strcpy(temp, imageDir);
-	strcat(temp, "bottom.bmp");
-	skyTexture[5] = CreateDefaultBMP(temp);
+	enableDraw = _enableDraw;
+	enableLight = _enableLight;
+	if (enableDraw)
+	{
+		char temp[256];
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "front.bmp");
+		skyTexture[0] = CreateDefaultBMP(temp);
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "back.bmp");
+		skyTexture[1] = CreateDefaultBMP(temp);
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "left.bmp");
+		skyTexture[2] = CreateDefaultBMP(temp);
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "right.bmp");
+		skyTexture[3] = CreateDefaultBMP(temp);
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "top.bmp");
+		skyTexture[4] = CreateDefaultBMP(temp);
+		memset(temp, 0, 256);
+		strcpy(temp, imageDir);
+		strcat(temp, "bottom.bmp");
+		skyTexture[5] = CreateDefaultBMP(temp);
 
-	fastDrawCall = CreateDisplayList([this]()->void {DrawCommand();});
+		fastDrawCall = CreateDisplayList([this]()->void {DrawCommand(); });
+	}
+
 }
 
 void Sky::DrawCommand()
 {
+	if (enableLight)
+	{
+		glEnable(GL_LIGHTING);
+	}
+	else
+	{
+		glDisable(GL_LIGHTING);
+	}
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	//front

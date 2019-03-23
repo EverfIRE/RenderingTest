@@ -2,12 +2,16 @@
 
 #include "scene/scene.h"
 #include "Utils/Utils.h"
-#include "Actor/Sky/Sky.h"
+#include "Sky.h"
 #include "Model.h"
+#include "Ground.h"
+#include "DirectionLight.h"
 
 GLuint texture;
 Sky aSky;
 Model model;
+Ground ground;
+DirectionLight directionlight(GL_LIGHT0);
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -17,8 +21,13 @@ void Init()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	directionlight.SetAmbientColor(0.1f, 0.1f, 0.1f, 1.0f);
+	directionlight.SetDiffuseColor(0.8f, 0.8f, 0.8f, 1.0f);
+	directionlight.SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	directionlight.SetPosition(0.0f, 1.0f, 0.0f);
+
 	texture = CreateDefaultBMP("Default.bmp");
-	aSky.Init("Resource/Res_skybox/");
+	aSky.Init("Resource/Res_skybox/",true,true);
 	model.Init("Resource/SceneOBJ/Sphere.obj");	
 	model.mTexture = CreateDefaultBMP("Resource/earth.bmp");
 }
@@ -28,9 +37,12 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	directionlight.Enable(true);
 	//gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
-	//aSky.Draw();
+	aSky.Draw();
 	model.Draw();
+	ground.Draw();
+
 	//DrawTriangle();
 }
 

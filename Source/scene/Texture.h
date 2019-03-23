@@ -1,5 +1,6 @@
 #include <Utils/Struct.h>
 #include <Utils/Enum.h>
+#include "Utils/Utils.h"
 
 class Texture
 {

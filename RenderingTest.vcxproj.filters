@@ -25,12 +25,6 @@
     <Filter Include="Source\GLRenderContext">
       <UniqueIdentifier>{2daa89d8-8203-41ec-bf6c-2b74d40350fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Actor">
-      <UniqueIdentifier>{20206e71-1f6c-4dce-8d9d-2daaeff2fa14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Actor\Sky">
-      <UniqueIdentifier>{1bf58b06-e4ab-4694-9df8-e5da7cf8308c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp">
@@ -42,13 +36,25 @@
     <ClCompile Include="Source\Utils\Utils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Actor\Sky\Sky.cpp">
-      <Filter>Source\Actor\Sky</Filter>
-    </ClCompile>
     <ClCompile Include="Source\scene\Texture.cpp">
       <Filter>Source\scene</Filter>
     </ClCompile>
     <ClCompile Include="Source\scene\Model.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\Ground.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\BaseLight.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\DirectionLight.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\Sky.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\Object.cpp">
       <Filter>Source\scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,9 +68,6 @@
     <ClInclude Include="Source\Utils\Utils.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Actor\Sky\Sky.h">
-      <Filter>Source\Actor\Sky</Filter>
-    </ClInclude>
     <ClInclude Include="Source\scene\Texture.h">
       <Filter>Source\scene</Filter>
     </ClInclude>
@@ -76,6 +79,21 @@
     </ClInclude>
     <ClInclude Include="Source\Utils\Enum.h">
       <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Ground.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\BaseLight.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\DirectionLight.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Sky.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Object.h">
+      <Filter>Source\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

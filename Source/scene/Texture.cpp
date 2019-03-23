@@ -1,5 +1,4 @@
 #include "Texture.h"
-#include "Utils/Utils.h"
 
 Texture::Texture(char*TexPath)
 {
@@ -51,6 +50,11 @@ unsigned char * Texture::DecodeBMP(unsigned char * bmpFileData)
 		return pixelData;
 	}
 	return nullptr;
+}
+
+ImageType Texture::GetImageType()
+{
+	return ImageType();
 }
 
 
