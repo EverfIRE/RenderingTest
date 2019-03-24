@@ -3,6 +3,9 @@
 
 Model::Model()
 {
+	memset(mAmbientMaterial, 0, sizeof(mAmbientMaterial));
+	memset(mDiffuseMaterial, 0, sizeof(mDiffuseMaterial));
+	memset(mSpecularMaterial, 0, sizeof(mSpecularMaterial));
 }
 
 void Model::Init(const char* ObjPath)
@@ -38,10 +41,12 @@ void Model::Init(const char* ObjPath)
 
 void Model::Draw()
 {
-		glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,mTexture);
-
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mAmbientMaterial);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mDiffuseMaterial);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mSpecularMaterial);
 	glPushMatrix();
 	glTranslatef(0.0f,0.0f,-5.0f);
 	glBegin(GL_TRIANGLES);
@@ -157,4 +162,28 @@ unsigned char* Model::DecodeObj(unsigned char * bmpFileData)
 		memcpy(mVertexesData[i].normal, normals[faceIndexs[i].normalIndex - 1].v, sizeof(float) * 3);
 	}
 	return nullptr;
+}
+
+void Model::SetAmbientMaterial(float r, float g, float b, float a)
+{
+	mAmbientMaterial[0] = r;
+	mAmbientMaterial[1] = g;
+	mAmbientMaterial[2] = b;
+	mAmbientMaterial[3] = a;
+}
+
+void Model::SetDiffuseMaterial(float r, float g, float b, float a)
+{
+	mDiffuseMaterial[0] = r;
+	mDiffuseMaterial[1] = g;
+	mDiffuseMaterial[2] = b;
+	mDiffuseMaterial[3] = a;
+}
+
+void Model::SetSpecularMaterial(float r, float g, float b, float a)
+{
+	mSpecularMaterial[0] = r;
+	mSpecularMaterial[1] = g;
+	mSpecularMaterial[2] = b;
+	mSpecularMaterial[3] = a;
 }

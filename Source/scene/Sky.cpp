@@ -1,11 +1,10 @@
-#include "GLRenderContext/GLRenderContext.h"
 #include "Sky.h"
 #include "Utils/Utils.h"
 
-void Sky::Init(const char*imageDir, bool _enableDraw, bool _enableLight)
+void Sky::Init(const char*imageDir, bool _enableDraw)
 {
 	enableDraw = _enableDraw;
-	enableLight = _enableLight;
+
 	if (enableDraw)
 	{
 		char temp[256];
@@ -41,14 +40,7 @@ void Sky::Init(const char*imageDir, bool _enableDraw, bool _enableLight)
 
 void Sky::DrawCommand()
 {
-	if (enableLight)
-	{
-		glEnable(GL_LIGHTING);
-	}
-	else
-	{
-		glDisable(GL_LIGHTING);
-	}
+
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	//front

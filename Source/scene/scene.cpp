@@ -27,9 +27,16 @@ void Init()
 	directionlight.SetPosition(0.0f, 1.0f, 0.0f);
 
 	texture = CreateDefaultBMP("Default.bmp");
-	aSky.Init("Resource/Res_skybox/",true,true);
+	aSky.Init("Resource/Res_skybox/",true);
 	model.Init("Resource/SceneOBJ/Sphere.obj");	
 	model.mTexture = CreateDefaultBMP("Resource/earth.bmp");
+	model.SetAmbientMaterial(0.1f, 0.1f, 0.1f, 1.0f);
+	model.SetDiffuseMaterial(0.4f, 0.4f, 0.4f, 1.0f);
+	model.SetSpecularMaterial(1.0f, 1.0f, 1.0f, 1.0f);
+
+	ground.SetAmbientMaterial(0.1f, 0.1f, 0.1f, 1.0f);
+	ground.SetDiffuseMaterial(0.4f, 0.4f, 0.4f, 1.0f);
+	ground.SetSpecularMaterial(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void Draw()
@@ -37,10 +44,16 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	directionlight.Enable(true);
 	//gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+	directionlight.Enable(true);
+
+	aSky.EnableLight(false);
 	aSky.Draw();
+
+	model.EnableLight(true);
 	model.Draw();
+
+	ground.EnableLight(true);
 	ground.Draw();
 
 	//DrawTriangle();

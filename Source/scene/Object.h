@@ -7,7 +7,8 @@ public:
 	Object();
 	~Object();
 
-	bool enableLight;
+	void EnableLight(bool _enableLight);
+
 	bool enableDraw;
 };
 
