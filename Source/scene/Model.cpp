@@ -42,8 +42,10 @@ void Model::Init(const char* ObjPath)
 void Model::Draw()
 {
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D,mTexture);
+	//glEnable(GL_TEXTURE_2D);
+	//glBindTexture(GL_TEXTURE_2D,mTexture);
+	glDisable(GL_TEXTURE_2D);
+	glMaterialf(GL_FRONT,GL_SHININESS, 64.0f);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mAmbientMaterial);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mDiffuseMaterial);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mSpecularMaterial);

@@ -57,6 +57,12 @@
     <ClCompile Include="Source\scene\Object.cpp">
       <Filter>Source\scene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\scene\PointLight.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\SpotLight.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h">
@@ -93,6 +99,12 @@
       <Filter>Source\scene</Filter>
     </ClInclude>
     <ClInclude Include="Source\scene\Object.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\PointLight.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\SpotLight.h">
       <Filter>Source\scene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -126,8 +126,10 @@
     <ClCompile Include="Source\scene\Ground.cpp" />
     <ClCompile Include="Source\scene\Model.cpp" />
     <ClCompile Include="Source\scene\Object.cpp" />
+    <ClCompile Include="Source\scene\PointLight.cpp" />
     <ClCompile Include="Source\scene\scene.cpp" />
     <ClCompile Include="Source\scene\Sky.cpp" />
+    <ClCompile Include="Source\scene\SpotLight.cpp" />
     <ClCompile Include="Source\scene\Texture.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
@@ -138,8 +140,10 @@
     <ClInclude Include="Source\scene\Ground.h" />
     <ClInclude Include="Source\scene\Model.h" />
     <ClInclude Include="Source\scene\Object.h" />
+    <ClInclude Include="Source\scene\PointLight.h" />
     <ClInclude Include="Source\scene\scene.h" />
     <ClInclude Include="Source\scene\Sky.h" />
+    <ClInclude Include="Source\scene\SpotLight.h" />
     <ClInclude Include="Source\scene\Texture.h" />
     <ClInclude Include="Source\Utils\Enum.h" />
     <ClInclude Include="Source\Utils\Struct.h" />

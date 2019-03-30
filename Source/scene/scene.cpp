@@ -6,12 +6,16 @@
 #include "Model.h"
 #include "Ground.h"
 #include "DirectionLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
 
 GLuint texture;
 Sky aSky;
 Model model;
 Ground ground;
 DirectionLight directionlight(GL_LIGHT0);
+PointLight pointLight(GL_LIGHT1), pointLight1(GL_LIGHT2);
+SpotLight spotlight(GL_LIGHT3);
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -22,16 +26,38 @@ void Init()
 	glLoadIdentity();
 
 	directionlight.SetAmbientColor(0.1f, 0.1f, 0.1f, 1.0f);
-	directionlight.SetDiffuseColor(0.8f, 0.8f, 0.8f, 1.0f);
+	directionlight.SetDiffuseColor(0.6f, 0.6f, 0.6f, 1.0f);
 	directionlight.SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	directionlight.SetPosition(0.0f, 1.0f, 0.0f);
+
+	pointLight.SetAmbientColor(0.1f,0.1f,0.1f,1.0f);
+	pointLight.SetDiffuseColor(0.8f,1.0f,0.8f,1.0f);
+	pointLight.SetSpecularColor(1.0f,1.0f,1.0f,1.0f);
+	pointLight.SetPosition(0.0f,0.0f,0.0f);
+	pointLight.SetConstAttenuation(1.0f);
+	pointLight.SetLinearAttenuation(0.2f);
+
+	pointLight1.SetAmbientColor(0.1f, 0.1f, 0.1f, 1.0f);
+	pointLight1.SetDiffuseColor(1.0f, 0.8f, 0.8f, 1.0f);
+	pointLight1.SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	pointLight1.SetPosition(-10.0f, 0.0f, -15.0f);
+	pointLight1.SetConstAttenuation(1.0f);
+	pointLight1.SetLinearAttenuation(0.2f);
+
+	spotlight.SetAmbientColor(0.1f, 0.1f, 0.1f, 1.0f);
+	spotlight.SetDiffuseColor(0.0f, 0.8f, 0.0f, 1.0f);
+	spotlight.SetSpecularColor(1.0f, 0.0f, 0.0f, 1.0f);
+	spotlight.SetPosition(10.0f,50.0f,-30.0f);
+	spotlight.SetDirection(0.0f,-1.0f,0.0f);
+	spotlight.SetExponent(5.0f);
+	spotlight.SetCutoff(10.0f);
 
 	texture = CreateDefaultBMP("Default.bmp");
 	aSky.Init("Resource/Res_skybox/",true);
 	model.Init("Resource/SceneOBJ/Sphere.obj");	
 	model.mTexture = CreateDefaultBMP("Resource/earth.bmp");
 	model.SetAmbientMaterial(0.1f, 0.1f, 0.1f, 1.0f);
-	model.SetDiffuseMaterial(0.4f, 0.4f, 0.4f, 1.0f);
+	model.SetDiffuseMaterial(0.8f, 0.8f, 0.8f, 1.0f);
 	model.SetSpecularMaterial(1.0f, 1.0f, 1.0f, 1.0f);
 
 	ground.SetAmbientMaterial(0.1f, 0.1f, 0.1f, 1.0f);
@@ -45,13 +71,15 @@ void Draw()
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	//gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
-	directionlight.Enable(true);
+	directionlight.Enable(false);
+	pointLight.Enable(true);
+	pointLight1.Enable(true);
+	spotlight.Enable(true);
+	//aSky.EnableLight(false);
+	//aSky.Draw();
 
-	aSky.EnableLight(false);
-	aSky.Draw();
-
-	model.EnableLight(true);
-	model.Draw();
+	//model.EnableLight(true);
+	//model.Draw();
 
 	ground.EnableLight(true);
 	ground.Draw();
