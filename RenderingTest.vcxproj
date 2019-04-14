@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>.\Source;$(IncludePath)</IncludePath>
+    <IncludePath>.\Source\scene;.\Source\GLRenderContext;.\Source\RenderWindows;.\Source\Utils;.\Source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>G:\GitHub\RenderingTest\Source;$(IncludePath)</IncludePath>
@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="Source\RenderWindows\MainRenderWin.cpp" />
     <ClCompile Include="Source\scene\BaseLight.cpp" />
+    <ClCompile Include="Source\scene\Camera.cpp" />
     <ClCompile Include="Source\scene\DirectionLight.cpp" />
     <ClCompile Include="Source\scene\Ground.cpp" />
     <ClCompile Include="Source\scene\Model.cpp" />
@@ -132,10 +133,12 @@
     <ClCompile Include="Source\scene\SpotLight.cpp" />
     <ClCompile Include="Source\scene\Texture.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
+    <ClCompile Include="Source\Utils\vector3f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h" />
     <ClInclude Include="Source\scene\BaseLight.h" />
+    <ClInclude Include="Source\scene\Camera.h" />
     <ClInclude Include="Source\scene\DirectionLight.h" />
     <ClInclude Include="Source\scene\Ground.h" />
     <ClInclude Include="Source\scene\Model.h" />
@@ -148,6 +151,7 @@
     <ClInclude Include="Source\Utils\Enum.h" />
     <ClInclude Include="Source\Utils\Struct.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
+    <ClInclude Include="Source\Utils\vector3f.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

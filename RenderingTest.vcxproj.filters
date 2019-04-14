@@ -63,6 +63,12 @@
     <ClCompile Include="Source\scene\SpotLight.cpp">
       <Filter>Source\scene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\vector3f.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\Camera.cpp">
+      <Filter>Source\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GLRenderContext\GLRenderContext.h">
@@ -105,6 +111,12 @@
       <Filter>Source\scene</Filter>
     </ClInclude>
     <ClInclude Include="Source\scene\SpotLight.h">
+      <Filter>Source\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\vector3f.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene\Camera.h">
       <Filter>Source\scene</Filter>
     </ClInclude>
   </ItemGroup>

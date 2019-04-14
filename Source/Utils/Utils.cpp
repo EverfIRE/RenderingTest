@@ -1,6 +1,6 @@
 ﻿#pragma once
 #define _CRT_SECURE_NO_WARNINGS
-#include "Utils/Utils.h"
+#include "Utils.h"
 
 char szBuffer[MAX_PATH] = { 0 };
 
@@ -157,3 +157,4 @@ GLuint CreateDisplayList(std::function<void()> foo)
 	glEndList();
 	return displayList;
 }
+

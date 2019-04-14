@@ -1,7 +1,7 @@
 //ThisFile Is about all Scene 
 #pragma once
 
-#include "GLRenderContext/GLRenderContext.h"
+#include "GLRenderContext.h"
 
 //Init Scene Draw Context
 void Init();
@@ -9,6 +9,10 @@ void Init();
 //Draw All Scene
 void Draw();
 
+//Imput Message
+void OneKeyDown(char key);
+void OneKeyUp(char key);
+void OneMouseMove(float deltax,float deltay);
 
 /**------------------Draw triangle--------------------**/
 void DrawTriangle();

@@ -1,19 +1,65 @@
-#include "GLRenderContext/GLRenderContext.h"
-#include "scene/scene.h"
-#include "Utils/Utils.h"
+#include "GLRenderContext.h"
+#include "scene.h"
+#include "Utils.h"
 
 #pragma comment(lib,"opengl32.lib")
 #pragma comment(lib,"glu32.lib")
+#pragma comment(lib,"winmm.lib")
+
+POINT originalPos;
+bool rotateView = false;
 
 LRESULT CALLBACK RenderTesProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{
+	case WM_RBUTTONDOWN:
+		GetCursorPos(&originalPos);
+		ShowCursor(false);
+		rotateView = true;
+		return 0;
+	case WM_RBUTTONUP:
+		SetCursorPos(originalPos.x,originalPos.y);
+		ShowCursor(true);
+		rotateView = false;
+		return 0;
+	case WM_LBUTTONDOWN:
+		return 0;
+	case WM_LBUTTONUP:
+		return 0;
+
+	case WM_MOUSEMOVE:
+		if (rotateView)
+		{
+			POINT currentPos;
+			GetCursorPos(&currentPos);
+			int deltax = currentPos.x - originalPos.x;
+			int deltay = currentPos.y - originalPos.y;
+			OneMouseMove(deltax, deltay);
+			SetCursorPos(originalPos.x,originalPos.y);
+		}
+		return 0;
+
+	case WM_KEYDOWN:
+		OneKeyDown(wParam);
+		return 0;
+	case WM_KEYUP:
+		OneKeyUp(wParam);
+		return 0;
+
 	case WM_CLOSE:
 		PostQuitMessage(0);
-		break;
+		return 0;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
+}
+float GetFrameTime()
+{
+	static unsigned long lastTime = 0, timeSinceComputerStart = 0;
+	timeSinceComputerStart = timeGetTime();
+	unsigned long frameTime = lastTime == 0 ? 0 : timeSinceComputerStart - lastTime;
+	lastTime = timeSinceComputerStart;
+	return float(frameTime)/1000.0f;
 }
 
 INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)

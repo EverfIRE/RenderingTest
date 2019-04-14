@@ -1,13 +1,14 @@
 //ThisFile Is about all Scene 
 
-#include "scene/scene.h"
-#include "Utils/Utils.h"
+#include "scene.h"
+#include "Utils.h"
 #include "Sky.h"
 #include "Model.h"
 #include "Ground.h"
 #include "DirectionLight.h"
 #include "PointLight.h"
 #include "SpotLight.h"
+#include "Camera.h"
 
 GLuint texture;
 Sky aSky;
@@ -16,6 +17,7 @@ Ground ground;
 DirectionLight directionlight(GL_LIGHT0);
 PointLight pointLight(GL_LIGHT1), pointLight1(GL_LIGHT2);
 SpotLight spotlight(GL_LIGHT3);
+Camera maincamera;
 
 /*----Init Scene Context And Call Draw All Scene----*/
 void Init()
@@ -69,22 +71,72 @@ void Draw()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	//gluLookAt(0.0f,2.0f,0.0f,0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f);
+	float frameTime = GetFrameTime();
+	maincamera.Update(frameTime);
+
 	directionlight.Enable(false);
 	pointLight.Enable(true);
+	pointLight.UpdatePosition(maincamera.mPos.x,maincamera.mPos.y,maincamera.mPos.z);
 	pointLight1.Enable(true);
+	pointLight1.UpdatePosition(maincamera.mPos.x, maincamera.mPos.y, maincamera.mPos.z);
 	spotlight.Enable(true);
+	spotlight.UpdatePosition(maincamera.mPos.x, maincamera.mPos.y, maincamera.mPos.z);
 	//aSky.EnableLight(false);
 	//aSky.Draw();
 
-	//model.EnableLight(true);
-	//model.Draw();
+	model.EnableLight(true);
+	model.Draw();
 
 	ground.EnableLight(true);
 	ground.Draw();
-
 	//DrawTriangle();
+}
+
+void OneKeyDown(char key)
+{
+	switch (key)
+	{
+	case 'A':
+		maincamera.mbMoveLeft = true;
+		break;
+	case 'D':
+		maincamera.mbMoveRight = true;
+		break;
+	case 'W':
+		maincamera.mbMoveForward = true;
+		break;
+	case 'S':
+		maincamera.mbMoveBack = true;
+		break;
+	default:
+		break;
+	}
+}
+
+void OneKeyUp(char key)
+{
+	switch (key)
+	{
+	case 'A':
+		maincamera.mbMoveLeft = false;
+		break;
+	case 'D':
+		maincamera.mbMoveRight = false;
+		break;
+	case 'W':
+		maincamera.mbMoveForward = false;
+		break;
+	case 'S':
+		maincamera.mbMoveBack = false;
+		break;
+	default:
+		break;
+	}
+}
+
+void OneMouseMove(float deltax, float deltay)
+{
+
 }
 
 /**----------------------DrawTestScene--------------------**/
@@ -211,7 +263,6 @@ void DrawPlant()
 	glTexCoord2d(0.0f, 1.f); glVertex3f(-2.0f, -0.2f, -4.5f);
 	glEnd();
 }
-
 
 //Enable And Bind Texture
 //glBindTexture(GL_TEXTURE_2D, texture);

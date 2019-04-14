@@ -1,5 +1,5 @@
 #pragma once
-#include "GLRenderContext/GLRenderContext.h"
+#include "GLRenderContext.h"
 
 char* SelectFile(HWND pHwnd);
 
@@ -14,3 +14,5 @@ GLuint CreateTextureToBMP();
 GLuint CreateDefaultBMP(const char* vaule);
 
 GLuint CreateDisplayList(std::function<void()>foo);
+
+float GetFrameTime();
