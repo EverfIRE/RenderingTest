@@ -72,15 +72,15 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	float frameTime = GetFrameTime();
-	maincamera.Update(frameTime);
+	maincamera.Update(frameTime*0);
 
 	directionlight.Enable(false);
 	pointLight.Enable(true);
-	pointLight.UpdatePosition(maincamera.mPos.x,maincamera.mPos.y,maincamera.mPos.z);
+	pointLight.UpdatePosition(0, 0, 0);
 	pointLight1.Enable(true);
-	pointLight1.UpdatePosition(maincamera.mPos.x, maincamera.mPos.y, maincamera.mPos.z);
+	pointLight1.UpdatePosition(0, 0, 0);
 	spotlight.Enable(true);
-	spotlight.UpdatePosition(maincamera.mPos.x, maincamera.mPos.y, maincamera.mPos.z);
+	spotlight.UpdatePosition(0, 0, 0);
 	//aSky.EnableLight(false);
 	//aSky.Draw();
 

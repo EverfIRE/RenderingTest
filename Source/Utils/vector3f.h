@@ -6,6 +6,7 @@ public:
 	Vector3f(float x=0.0f, float y = 0.0f, float z = 0.0f);
 	Vector3f operator+(Vector3f&r);
 	Vector3f operator-(Vector3f&r);
+	Vector3f operator-(float r);
 	Vector3f operator*(float scaler);
 	float operator*(Vector3f&r);
 	void operator=(const Vector3f&r);

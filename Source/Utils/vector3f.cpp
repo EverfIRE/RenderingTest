@@ -11,6 +11,9 @@ Vector3f Vector3f::operator+(Vector3f&r) {
 Vector3f Vector3f::operator-(Vector3f&r) {
 	return Vector3f(x - r.x, y - r.y, z - r.z);
 }
+Vector3f Vector3f::operator-(float r) {
+	return Vector3f(x - r, y - r, z - r);
+}
 Vector3f Vector3f::operator*(float scaler){
 	return Vector3f(x*scaler, y*scaler, z*scaler);
 }
