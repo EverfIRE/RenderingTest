@@ -9,6 +9,7 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Camera.h"
+#include "Enum.h"
 
 GLuint texture;
 Sky aSky;
@@ -72,7 +73,7 @@ void Draw()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	float frameTime = GetFrameTime();
-	maincamera.Update(frameTime*0);
+	maincamera.Update(frameTime,5.0);
 
 	directionlight.Enable(false);
 	pointLight.Enable(true);
@@ -81,8 +82,8 @@ void Draw()
 	pointLight1.UpdatePosition(0, 0, 0);
 	spotlight.Enable(true);
 	spotlight.UpdatePosition(0, 0, 0);
-	//aSky.EnableLight(false);
-	//aSky.Draw();
+	aSky.EnableLight(false);
+	aSky.Draw();
 
 	model.EnableLight(true);
 	model.Draw();
@@ -97,16 +98,16 @@ void OneKeyDown(char key)
 	switch (key)
 	{
 	case 'A':
-		maincamera.mbMoveLeft = true;
+		maincamera.camMoveState = MoveStat::mbMoveLeft;
 		break;
 	case 'D':
-		maincamera.mbMoveRight = true;
+		maincamera.camMoveState = MoveStat::mbMoveRight;
 		break;
 	case 'W':
-		maincamera.mbMoveForward = true;
+		maincamera.camMoveState = MoveStat::mbMoveForward;
 		break;
 	case 'S':
-		maincamera.mbMoveBack = true;
+		maincamera.camMoveState = MoveStat::mbMoveBack;
 		break;
 	default:
 		break;
@@ -118,16 +119,16 @@ void OneKeyUp(char key)
 	switch (key)
 	{
 	case 'A':
-		maincamera.mbMoveLeft = false;
+		maincamera.camMoveState = MoveStat::defaults;
 		break;
 	case 'D':
-		maincamera.mbMoveRight = false;
+		maincamera.camMoveState = MoveStat::defaults;
 		break;
 	case 'W':
-		maincamera.mbMoveForward = false;
+		maincamera.camMoveState = MoveStat::defaults;
 		break;
 	case 'S':
-		maincamera.mbMoveBack = false;
+		maincamera.camMoveState = MoveStat::defaults;
 		break;
 	default:
 		break;

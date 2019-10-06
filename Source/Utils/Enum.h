@@ -16,3 +16,12 @@ enum ModelType
 	FBX = 3,
 	DEFAULT = 4,
 };
+
+enum MoveStat
+{
+	mbMoveLeft,
+	mbMoveRight,
+	mbMoveForward,
+	mbMoveBack,
+	defaults
+};
