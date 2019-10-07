@@ -1,6 +1,6 @@
 #pragma once
 #include "Object.h"
-
+#include "vector3f.h"
 class Sky:public Object
 {
 private:
@@ -10,6 +10,6 @@ public:
 
 	void Init(const char*imageDir,bool _enableDraw);
 	void DrawCommand();
-	void Draw();
+	void Draw(Vector3f pos);
 };
 

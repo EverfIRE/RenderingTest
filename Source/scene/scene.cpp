@@ -83,7 +83,7 @@ void Draw()
 	spotlight.Enable(true);
 	spotlight.UpdatePosition(0, 0, 0);
 	aSky.EnableLight(false);
-	aSky.Draw();
+	aSky.Draw(maincamera.mPos);
 
 	model.EnableLight(true);
 	model.Draw();

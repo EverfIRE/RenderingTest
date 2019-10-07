@@ -16,13 +16,13 @@ void Camera::Update(float deltaTime,float moveSpeed)
 	{
 	case mbMoveLeft:
 		delta = rightvector * deltaTime * moveSpeed;
-		mPos = mPos + delta;
-		mViewCenter = mViewCenter + delta;
+		mPos = mPos - delta;
+		mViewCenter = mViewCenter - delta;
 		break;
 	case mbMoveRight:
 		delta = rightvector * deltaTime * moveSpeed;
-		mPos = mPos - delta;
-		mViewCenter = mViewCenter - delta;
+		mPos = mPos + delta;
+		mViewCenter = mViewCenter + delta;
 		break;
 	case mbMoveForward:
 		delta = forwardvector * deltaTime * moveSpeed;

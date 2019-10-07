@@ -118,8 +118,11 @@ void Sky::DrawCommand()
 	glEnd();
 }
 
-void Sky::Draw()
+void Sky::Draw(Vector3f pos)
 {
+	glPushMatrix();
+	glTranslatef(pos.x, pos.y, pos.z);
 	glCallList(fastDrawCall);
+	glPopMatrix();
 }
 
