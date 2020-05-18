@@ -75,7 +75,7 @@ void Draw()
 	float frameTime = GetFrameTime();
 	maincamera.Update(frameTime,5.0);
 
-	directionlight.Enable(false);
+	directionlight.Enable(true);
 	pointLight.Enable(true);
 	pointLight.UpdatePosition(0, 0, 0);
 	pointLight1.Enable(true);
@@ -137,7 +137,10 @@ void OneKeyUp(char key)
 
 void OneMouseMove(float deltax, float deltay)
 {
-
+	float angleRotatedByUp = deltax / 1000.0f;
+	float angleRotatedByRight = deltay / 1000.0f;
+	maincamera.Yaw(-angleRotatedByUp);
+	maincamera.Pitch(-angleRotatedByRight);
 }
 
 /**----------------------DrawTestScene--------------------**/

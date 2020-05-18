@@ -69,3 +69,5 @@ RenderingTest/x64/Debug/RenderingTest.pdb
 RenderingTest/RenderingTest/RenderingTest.vcxproj
 RenderingTest/RenderingTest/RenderingTest.vcxproj.filters
 *.enc
+x64/Debug/RenderingTest.vcxproj.FileListAbsolute.txt
+.vs/RenderingTest/config/applicationhost.config
