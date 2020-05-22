@@ -33,18 +33,18 @@ LRESULT CALLBACK RenderTesProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam
 		{
 			POINT currentPos;
 			GetCursorPos(&currentPos);
-			int deltax = currentPos.x - originalPos.x;
-			int deltay = currentPos.y - originalPos.y;
+			float deltax = float(currentPos.x - originalPos.x);
+			float deltay = float(currentPos.y - originalPos.y);
 			OneMouseMove(deltax, deltay);
 			SetCursorPos(originalPos.x,originalPos.y);
 		}
 		return 0;
 
 	case WM_KEYDOWN:
-		OneKeyDown(wParam);
+		OneKeyDown(char(wParam));
 		return 0;
 	case WM_KEYUP:
-		OneKeyUp(wParam);
+		OneKeyUp(char(wParam));
 		return 0;
 
 	case WM_CLOSE:
